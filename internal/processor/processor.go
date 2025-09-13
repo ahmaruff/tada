@@ -2,7 +2,7 @@ package processor
 
 import "github.com/ahmaruff/tada/internal/model"
 
-func UpdateTask(sections []model.Section) []model.Section {
+func ConsolidateTasks(sections []model.Section) []model.Section {
 	// Build a map of task updates from Todo, Done, and Archives sections
 	taskUpdates := make(map[string]*model.Task)
 

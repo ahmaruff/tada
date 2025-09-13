@@ -7,7 +7,7 @@ import (
 	"github.com/ahmaruff/tada/internal/model"
 )
 
-func TestUpdateTask(t *testing.T) {
+func TestConsolidateTasks(t *testing.T) {
 	sections := []model.Section{
 		{
 			Name: "Backlog",
@@ -93,7 +93,7 @@ func TestUpdateTask(t *testing.T) {
 		},
 	}
 
-	result := UpdateTask(sections)
+	result := ConsolidateTasks(sections)
 
 	// Test that we still have 4 sections
 	if len(result) != 4 {
