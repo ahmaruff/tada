@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/ahmaruff/tada/internal/model"
 	"github.com/ahmaruff/tada/internal/parser"
 	"github.com/ahmaruff/tada/internal/processor"
 	"github.com/ahmaruff/tada/internal/writer"
@@ -90,7 +91,7 @@ func runGen(cmd *cobra.Command, args []string) {
 	// Count archived tasks
 	var archivedCount int
 	for _, section := range sections {
-		if section.Name == "Archives" {
+		if section.Name == model.SectionArchives {
 			archivedCount = len(section.Tasks)
 			break
 		}
@@ -110,7 +111,7 @@ func runGen(cmd *cobra.Command, args []string) {
 		if genVerbose {
 			fmt.Println("Archived tasks:")
 			for _, section := range sections {
-				if section.Name == "Archives" {
+				if section.Name == model.SectionArchives {
 					for i, task := range section.Tasks {
 						dateStr := "no date"
 						if task.StartDate != nil {
