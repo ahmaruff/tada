@@ -10,7 +10,7 @@ import (
 func TestConsolidateTasks(t *testing.T) {
 	sections := []model.Section{
 		{
-			Name: "Backlog",
+			Name: model.SectionBacklog,
 			Tasks: []model.Task{
 				{
 					ID:      "123",
@@ -38,7 +38,7 @@ func TestConsolidateTasks(t *testing.T) {
 			},
 		},
 		{
-			Name: "Todo",
+			Name: model.SectionTodo,
 			Tasks: []model.Task{
 				{
 					ID:          "123",
@@ -55,7 +55,7 @@ func TestConsolidateTasks(t *testing.T) {
 			},
 		},
 		{
-			Name: "Done",
+			Name: model.SectionDone,
 			Tasks: []model.Task{
 				{
 					ID:          "123",
@@ -81,7 +81,7 @@ func TestConsolidateTasks(t *testing.T) {
 			},
 		},
 		{
-			Name: "Archives",
+			Name: model.SectionArchives,
 			Tasks: []model.Task{
 				{
 					ID:      "999",
@@ -102,7 +102,7 @@ func TestConsolidateTasks(t *testing.T) {
 
 	// Test Backlog section updates
 	backlogSection := result[0]
-	if backlogSection.Name != "Backlog" {
+	if backlogSection.Name != model.SectionBacklog {
 		t.Errorf("Expected first section to be Backlog, got %s", backlogSection.Name)
 	}
 

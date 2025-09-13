@@ -62,7 +62,7 @@ func TestParseContent(t *testing.T) {
 	}
 
 	// Test section names
-	expectedNames := []string{"Backlog", "Todo", "Done", "Archives"}
+	expectedNames := []model.SectionName{model.SectionBacklog, model.SectionTodo, model.SectionDone, model.SectionArchives}
 	for i, section := range sections {
 		if section.Name != expectedNames[i] {
 			t.Errorf("Expected section %d name to be '%s', got '%s'", i, expectedNames[i], section.Name)

@@ -48,6 +48,13 @@ func ParseContent(scanner *bufio.Scanner) ([]model.Section, error) {
 	var currentTask *model.Task
 	var currentDate *time.Time
 
+	sectionNameList := map[string]model.SectionName{
+		"Backlog":  model.SectionBacklog,
+		"Archives": model.SectionArchives,
+		"Todo":     model.SectionTodo,
+		"Done":     model.SectionDone,
+	}
+
 	for scanner.Scan() {
 		line := scanner.Text()
 		lineType, extractedValue := checkLineType(line)
@@ -62,7 +69,12 @@ func ParseContent(scanner *bufio.Scanner) ([]model.Section, error) {
 				sections = append(sections, *currentSection)
 			}
 
-			currentSection = &model.Section{Name: extractedValue}
+			name, ok := sectionNameList[extractedValue]
+			if !ok {
+				name = model.SectionName(extractedValue)
+			}
+
+			currentSection = &model.Section{Name: name}
 			currentTask = nil
 		case LineDateHeader:
 			// Save previous task before new date group

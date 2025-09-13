@@ -8,7 +8,7 @@ func ConsolidateTasks(sections []model.Section) []model.Section {
 
 	for _, section := range sections {
 
-		if section.Name == "Todo" || section.Name == "Done" || section.Name == "Archives" {
+		if section.Name == model.SectionTodo || section.Name == model.SectionDone || section.Name == model.SectionArchives {
 			for _, task := range section.Tasks {
 
 				if task.ID != "" {
@@ -36,7 +36,7 @@ func ConsolidateTasks(sections []model.Section) []model.Section {
 		}
 
 		for j, task := range section.Tasks {
-			if section.Name == "Backlog" && task.ID != "" {
+			if section.Name == model.SectionBacklog && task.ID != "" {
 				// Update Backlog task if we have update data
 				if updateData, exists := taskUpdates[task.ID]; exists {
 					updatedSections[i].Tasks[j] = applyTaskUpdate(task, updateData)

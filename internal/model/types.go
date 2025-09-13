@@ -10,6 +10,15 @@ const (
 	StatusDone       TaskStatus = "[x]"
 )
 
+type SectionName string
+
+const (
+	SectionBacklog  SectionName = "Backlog"
+	SectionArchives SectionName = "Archives"
+	SectionTodo     SectionName = "Todo"
+	SectionDone     SectionName = "Done"
+)
+
 type Subtask struct {
 	Status  TaskStatus
 	Content string
@@ -28,6 +37,6 @@ type Task struct {
 }
 
 type Section struct {
-	Name  string
+	Name  SectionName
 	Tasks []Task
 }
