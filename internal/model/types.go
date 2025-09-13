@@ -31,16 +31,3 @@ type Section struct {
 	Name  string
 	Tasks []Task
 }
-
-// LogEntry represents a consolidated and formatted task
-// for the final output. Multiple Task structs can be combined
-// to create a single LogEntry.
-type LogEntry struct {
-	ID          string
-	Title       string
-	Project     string
-	StartDate   *time.Time
-	EndDate     *time.Time
-	Description string
-	SubTasks    []Subtask
-}
