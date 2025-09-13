@@ -25,7 +25,7 @@ const (
 var (
 	sectionHeaderRegex = regexp.MustCompile(`^##\s(.+?)\s*$`)
 	dateHeaderRegex    = regexp.MustCompile(`^###\s(\d{4}-\d{2}-\d{2})(?:\s.*)?$`)
-	taskRegex          = regexp.MustCompile(`^-\s\[( |x|-)\]\s(.+?)(?:\s<!--\s(.+?)\s-->)?$`)
+	taskRegex          = regexp.MustCompile(`^-\s\[( |x|-)\]\s(.+?)(?:\s<!--(.+?)-->)?$`)
 	subtaskRegex       = regexp.MustCompile(`^\s+-\s\[( |x|-)\]\s(.+)$`)
 	descriptionRegex   = regexp.MustCompile(`^\s+.+$`)
 )

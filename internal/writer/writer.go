@@ -32,14 +32,12 @@ func GenerateInputMarkdown(sections []model.Section) string {
 		// Handle different section types
 		switch section.Name {
 		case model.SectionBacklog, model.SectionArchives:
-			// These sections don't use date headers
-			writeTasks(&result, section.Tasks, false, nil)
+			writeTasks(&result, section.Tasks, false)
 		case model.SectionTodo, model.SectionDone:
 			// These sections group tasks by date headers
 			writeTasksWithDateHeaders(&result, section.Tasks)
 		default:
-			// Default behavior - no date headers
-			writeTasks(&result, section.Tasks, false, nil)
+			writeTasks(&result, section.Tasks, false)
 		}
 	}
 
@@ -75,13 +73,6 @@ func taskToOutputMarkdown(task model.Task) string {
 
 	// Title
 	fmt.Fprintf(&result, "# %s\n", task.Title)
-
-	// fmt.Fprintf(
-	//     &result,
-	//     "- [%s] %s <!-- %s -->\n",
-	//     status, task.Title, comment,
-	// )
-	// result.WriteString(fmt.Sprintf("# %s\n", task.Title))
 
 	// Project
 	if task.Project != "" {
@@ -121,14 +112,14 @@ func taskToOutputMarkdown(task model.Task) string {
 		fmt.Fprintf(&result, "  - [%s] %s\n", status, subtask.Content)
 	}
 
-	result.WriteString("---\n")
+	result.WriteString("\n---\n")
 	return result.String()
 }
 
 // writeTasks writes tasks in the input format
-func writeTasks(result *strings.Builder, tasks []model.Task, useHeaderDate bool, headerDate *time.Time) {
+func writeTasks(result *strings.Builder, tasks []model.Task, useHeaderDate bool) {
 	for _, task := range tasks {
-		writeTask(result, task, useHeaderDate, headerDate)
+		writeTask(result, task, useHeaderDate)
 	}
 }
 
@@ -163,19 +154,14 @@ func writeTasksWithDateHeaders(result *strings.Builder, tasks []model.Task) {
 
 		tasks := dateGroups[dateKey]
 		for _, task := range tasks {
-			var headerDate *time.Time
-			if dateKey != "no-date" {
-				if date, err := time.Parse("2006-01-02", dateKey); err == nil {
-					headerDate = &date
-				}
-			}
-
-			writeTask(result, task, true, headerDate)
+			writeTask(result, task, true)
 		}
+
+		result.WriteString("\n")
 	}
 }
 
-func writeTask(result *strings.Builder, task model.Task, useHeaderDate bool, headerDate *time.Time) {
+func writeTask(result *strings.Builder, task model.Task, useHeaderDate bool) {
 	// Task line with status and title
 	status := " "
 	switch task.Status {
@@ -186,7 +172,7 @@ func writeTask(result *strings.Builder, task model.Task, useHeaderDate bool, hea
 	}
 
 	// Build comment
-	comment := buildTaskComment(task, useHeaderDate, headerDate)
+	comment := buildTaskComment(task, useHeaderDate)
 
 	if comment != "" {
 		fmt.Fprintf(result, "- [%s] %s <!-- %s -->\n", status, task.Title, comment)
@@ -212,8 +198,7 @@ func writeTask(result *strings.Builder, task model.Task, useHeaderDate bool, hea
 	}
 }
 
-// buildTaskComment creates the comment part for a task
-func buildTaskComment(task model.Task, useHeaderDate bool, headerDate *time.Time) string {
+func buildTaskComment(task model.Task, useHeaderDate bool) string {
 	var parts []string
 
 	// Add project
@@ -226,10 +211,9 @@ func buildTaskComment(task model.Task, useHeaderDate bool, headerDate *time.Time
 		parts = append(parts, fmt.Sprintf("#%s", task.ID))
 	}
 
-	// Add dates (only if different from header date or no header date)
-	if !useHeaderDate || headerDate == nil || !datesEqual(task.StartDate, task.EndDate, headerDate) {
-		dateStr := formatTaskDates(task.StartDate, task.EndDate)
-		if dateStr != "" {
+	// Add dates only if we're not relying on the header date
+	if !useHeaderDate {
+		if dateStr := formatTaskDates(task.StartDate, task.EndDate); dateStr != "" {
 			parts = append(parts, dateStr)
 		}
 	}
