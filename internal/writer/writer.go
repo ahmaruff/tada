@@ -112,7 +112,6 @@ func taskToOutputMarkdown(task model.Task) string {
 		fmt.Fprintf(&result, "  - [%s] %s\n", status, subtask.Content)
 	}
 
-	result.WriteString("\n---\n")
 	return result.String()
 }
 
