@@ -71,13 +71,17 @@ func GenerateOutputMarkdown(sections []model.Section) string {
 func taskToOutputMarkdown(task model.Task) string {
 	var result strings.Builder
 
-	// Title
-	fmt.Fprintf(&result, "# %s\n", task.Title)
+	// Merge project & title
+	var title string
 
-	// Project
 	if task.Project != "" {
-		fmt.Fprintf(&result, "### %s\n", strings.ToUpper(task.Project))
+		title += strings.ToUpper(task.Project) + " - "
 	}
+
+	title += task.Title
+
+	// Title
+	fmt.Fprintf(&result, "# %s\n", title)
 
 	// Date range
 	if task.StartDate != nil && task.EndDate != nil {
