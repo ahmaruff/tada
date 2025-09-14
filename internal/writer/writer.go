@@ -86,9 +86,9 @@ func taskToOutputMarkdown(task model.Task) string {
 	// Date range
 	if task.StartDate != nil && task.EndDate != nil {
 		if task.StartDate.Equal(*task.EndDate) {
-			fmt.Fprintf(&result, "%s\n", task.StartDate.Format("2006-01-02"))
+			fmt.Fprintf(&result, "%s  \n", task.StartDate.Format("2006-01-02"))
 		} else {
-			fmt.Fprintf(&result, "%s - %s\n",
+			fmt.Fprintf(&result, "%s - %s  \n",
 				task.StartDate.Format("2006-01-02"),
 				task.EndDate.Format("2006-01-02"))
 		}
@@ -96,9 +96,9 @@ func taskToOutputMarkdown(task model.Task) string {
 
 	// Description
 	if len(task.Description) > 0 {
-		fmt.Fprintf(&result, "Desc:\n")
+		fmt.Fprintf(&result, "Desc:  \n")
 		for _, desc := range task.Description {
-			fmt.Fprintf(&result, "  %s\n", desc)
+			fmt.Fprintf(&result, "  %s  \n", desc)
 		}
 	}
 
