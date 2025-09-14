@@ -1,44 +1,30 @@
 ## Backlog
-- [ ] New task <!-- @crm|#1 -->
-- [ ] New task 2 <!-- @hrm|#2 -->
-- [x] New task 3 <!-- @hrm|#3-->
-- [x] Task done today <!-- @hrm|#4 -->
-- [x] Task done multi day <!-- @hrm|#5 -->
-- [x] old task <!-- @hrm|#6 -->
-  i add description here
-  i add description here too
-- [x] old task 2 <!-- @crm|#7 -->
-- [x] old task 3 <!-- @crm|#8 -->
-- [x] some task <!-- #9 -->
+- [ ] Update README <!-- @tada|#1 -->
+- [ ] Bugfix command generate <!-- @tada|#2 -->
+- [ ] Update generated report markdown format <!-- @tada|#3 -->
+- [ ] Update command info/description <!-- @tada|#4 -->
+- [ ] Add new flag to keep archives after generate report <!-- @tada|#5 -->
+- [ ] Add new flag for grouping task by project on generated report <!-- @tada|#6 -->
+- [x] Parser <!-- @tada|#a|2025-09-13 -->
+  Write parser function for input file
+- [x] Writer functionality <!-- @tada|#b -->
+  - [x] Write generated report
+  - [x] Write/update input file
+- [ ] Processor - sync task on backlog, todo, and done <!-- @tada|#c -->
 
 ## Todo
-### 2025-09-13 - Sabtu
-- [ ] New task <!-- @crm|#1 -->
-  i add some description
-  - [-] also some subtask 
-  - [-] also some subtask 2 
-- [-] New task 2 <!-- @hrm|#2 -->
-- [x] New task 3 <!-- @hrm|#3 -->
+### 2025-09-14 - Minggu
+- [x] Update generated report markdown format <!-- @tada|#3 -->
+  make project inline with title. minimize wasted white space
+- [x] Processor - sync task on backlog, todo, and done <!-- @tada|#c -->
 
 ## Done
-### 2025-09-12 - Jum'at
-- [x] Task done today <!-- @hrm|#4 -->
-- [x] Task done multi day <!-- @hrm|#5 -->
-
-### 2025-09-11 - Kamis
-- [x] Task done multi day <!-- @hrm|#5 -->
-
-### 2025-09-10 - Rabu
-- [x] old task <!-- @hrm|#6 -->
-  i add description here too
-- [x] old task 2 <!-- @crm|#7 -->
-- [x] old task 3 <!-- @crm|#8-->
-
-### 2025-09-09 - Selasa
-- [x] old task <!-- @hrm|#6 -->
-  i add description here
-
-### 2025-09-08 - Senin
-- [x] some task <!-- #9 -->
+### 2025-09-13 - Sabtu
+- [x] Parser <!-- @tada|#a -->
+  Write parser function for input file
+- [x] Writer functionality <!-- @tada|#b -->
+  - [x] Write generated report
+  - [x] Write/update input file
+- [-] Processor - sync task on backlog, todo, and done <!-- @tada|#c -->
 
 ## Archives
