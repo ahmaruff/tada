@@ -1,7 +1,20 @@
-# Tada
-The simplest way to keep track of your tasks and logs
+```
+__/\\\\\\\\\\\\\\\_____/\\\\\\\\\_____/\\\\\\\\\\\\________/\\\\\\\\\____        
+ _\///////\\\/////____/\\\\\\\\\\\\\__\/\\\////////\\\____/\\\\\\\\\\\\\__       
+  _______\/\\\________/\\\/////////\\\_\/\\\______\//\\\__/\\\/////////\\\_      
+   _______\/\\\_______\/\\\_______\/\\\_\/\\\_______\/\\\_\/\\\_______\/\\\_     
+    _______\/\\\_______\/\\\\\\\\\\\\\\\_\/\\\_______\/\\\_\/\\\\\\\\\\\\\\\_    
+     _______\/\\\_______\/\\\/////////\\\_\/\\\_______\/\\\_\/\\\/////////\\\_   
+      _______\/\\\_______\/\\\_______\/\\\_\/\\\_______/\\\__\/\\\_______\/\\\_  
+       _______\/\\\_______\/\\\_______\/\\\_\/\\\\\\\\\\\\/___\/\\\_______\/\\\_ 
+        _______\///________\///________\///__\////////////_____\///________\///__
+```
 
-> Your favorite text editor + the power of Markdown = everything you need
+### **_The simplest way to keep track of your tasks_**  
+
+> _Your favorite text editor + the power of Markdown = **everything you need**_
+
+---
 
 ## Features
 
@@ -9,7 +22,6 @@ The simplest way to keep track of your tasks and logs
 - **Smart consolidation**: Automatically merge task data across different sections
 - **Date-range reports**: Generate clean reports with automatic filename dating
 - **Flexible workflow**: Daily cleanup or full report generation
-- **ID-based tracking**: Link tasks across Backlog, Todo, Done, and Archives sections
 
 ## How it works
 
@@ -113,14 +125,13 @@ tada gen                    # Full workflow in one command
 Reports use a clean format optimized for sharing:
 
 ```markdown
-# Task Title
-### PROJECT
-2025-01-15 - 2025-01-16
-Desc:
+# PROJECT - Task Title
+2025-09-14  
+Desc:  
   Task description here
   - [x] Completed subtask
   - [ ] Pending subtask
----
+
 ```
 
 Report files are automatically named with date ranges: `report_2025-01-15_2025-01-21.md`
